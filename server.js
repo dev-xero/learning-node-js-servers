@@ -6,6 +6,7 @@ const app = express();
 // SET EJS AS VIEW ENGINE
 app.set('view engine', 'ejs');
 
+// BLOG ARRAY CONTAINING OBJECTS
 const blogs = [
   {
     title: 'Chainsaw Man',
@@ -20,6 +21,9 @@ const blogs = [
     snippet: 'lorem ipsum dolor sit amet',
   },
 ];
+
+// MIDDLE WARE FOR STATIC FILES
+app.use(express.static('public'))
 
 app.listen(3000, () => {
   console.log(

@@ -1,0 +1,108 @@
+body {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+p,
+h1,
+h2,
+h3,
+a,
+ul {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: hsl(0, 0%, 13%);
+}
+
+/* NAV AND FOOTER STYLES */
+nav {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 60px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid hsl(0, 0%, 87%);
+  text-transform: uppercase;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+nav ul li {
+  list-style-type: none;
+  margin-left: 20px;
+}
+
+nav h1 {
+  font-size: 3em;
+}
+
+nav p,
+a {
+  color: hsl(0, 0%, 47%);
+  font-weight: 300;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+footer {
+  color: hsl(0, 0%, 47%);
+  text-align: center;
+  margin: 80px auto 20px;
+}
+
+h2 {
+  margin-bottom: 40px;
+}
+
+h3 {
+  text-transform: capitalize;
+  margin-bottom: 8px;
+}
+
+.content {
+  margin-left: 20px;
+}
+
+/* INDEX STYLES */
+/* DETAILS STYLES */
+/* CREATE STYLES */
+.create-blog form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.create-blog input,
+.create-blog textarea {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 8px;
+}
+
+.create-blog label {
+  display: block;
+  margin-top: 24px;
+}
+
+.create-blog textarea {
+  height: 120px;
+}
+
+.create-blog button {
+  margin-top: 20px;
+  background-color: hsl(212, 89%, 53%);
+  color: hsl(0, 0%, 100%);
+  padding: 12px 18px;
+  border: none;
+  font-size: 1.2em;
+  outline: none;
+  cursor: pointer;
+}
