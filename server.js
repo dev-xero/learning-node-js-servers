@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const Blog = require('./models/blog');
 
 // CREATE AN EXPRESS APP
 const app = express();
@@ -42,6 +43,18 @@ const blogs = [
 
 // MIDDLE WARE FOR STATIC FILES
 app.use(express.static('public'));
+
+app.get('/add-blog', (req, res) => {
+  const blog = new Blog({
+    title: 'Chainsaw Man',
+    snippet: 'All you need to know about chainsaw man',
+    body: 'Chainsaw Man coming this October',
+  });
+  blog
+    .save()
+    .then((results) => res.send(results))
+    .catch((err) => console.log(err));
+});
 
 app.get('/', (req, res) => {
   res.render('index', { title: 'Home', blogs });
