@@ -1,5 +1,5 @@
 # learning-node-js-servers
-Learning Back End Web Developement using NODE JS anD Express 
+Learning Back End Web Developement using NODE JS and Express 
 
 to run the server use `npm run server`
 
