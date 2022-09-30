@@ -3,6 +3,10 @@ const express = require('express');
 // CREATE AN EXPRESS APP
 const app = express();
 
+// TEST DB URI
+const dbURI =
+  'mongodb://TheCodeNinja:TheCodeNinjaPasswordMongoDB@localhost:27017/?authMechanism=DEFAULT';
+
 // SET EJS AS VIEW ENGINE
 app.set('view engine', 'ejs');
 
@@ -23,7 +27,7 @@ const blogs = [
 ];
 
 // MIDDLE WARE FOR STATIC FILES
-app.use(express.static('public'))
+app.use(express.static('public'));
 
 app.listen(3000, () => {
   console.log(
