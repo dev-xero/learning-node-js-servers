@@ -46,13 +46,25 @@ app.use(express.static('public'));
 
 app.get('/add-blog', (req, res) => {
   const blog = new Blog({
-    title: 'Chainsaw Man',
-    snippet: 'All you need to know about chainsaw man',
-    body: 'Chainsaw Man coming this October',
+    title: 'Mob Psycho III',
+    snippet: 'Mob Psycho III - The third part of the series',
+    body: 'This is be really good to watch',
   });
   blog
     .save()
     .then((results) => res.send(results))
+    .catch((err) => console.log(err));
+});
+
+app.get('/all-blogs', (req, res) => {
+  Blog.find()
+    .then((results) => res.send(results))
+    .catch((err) => console.log(err));
+});
+
+app.get('/single-blog', (req, res) => {
+  Blog.findById('6336dc8cde4ccabc02d6761e')
+    .then((result) => res.send(result))
     .catch((err) => console.log(err));
 });
 
