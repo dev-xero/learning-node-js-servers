@@ -1,11 +1,19 @@
 const express = require('express');
+const mongoose = require('mongoose');
 
 // CREATE AN EXPRESS APP
 const app = express();
 
 // TEST DB URI
 const dbURI =
-  'mongodb://TheCodeNinja:TheCodeNinjaPasswordMongoDB@localhost:27017/?authMechanism=DEFAULT';
+  'mongodb+srv://ninja:ninja1234@nodeblogs.pupd4ju.mongodb.net/?retryWrites=true&w=majority';
+
+mongoose
+  .connect(dbURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then((result) => console.log('connected'));
 
 // SET EJS AS VIEW ENGINE
 app.set('view engine', 'ejs');
@@ -28,12 +36,6 @@ const blogs = [
 
 // MIDDLE WARE FOR STATIC FILES
 app.use(express.static('public'));
-
-app.listen(3000, () => {
-  console.log(
-    'listening for requests on port 3000, site: http://localhost:3000'
-  );
-});
 
 app.get('/', (req, res) => {
   res.render('index', { title: 'Home', blogs });
