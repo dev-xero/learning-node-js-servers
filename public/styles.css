@@ -87,6 +87,15 @@ h3 {
   color: hsl(212, 89%, 53%);
 }
 /* DETAILS STYLES */
+.details {
+  position: relative;
+}
+.details .delete {
+  position: absolute;
+  padding: 8px;
+  top: 0px;
+  right: 0px;
+}
 /* CREATE STYLES */
 .create-blog form {
   max-width: 400px;

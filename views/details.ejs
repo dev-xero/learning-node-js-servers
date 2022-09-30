@@ -7,12 +7,25 @@
 
     <div class="details content">
       <h2><%= blog.title%></h2>
-			<div class="content">
-				<p><%= blog.body %> </p>
-			</div>
-			<a class="delete" data-doc="<%= blog._id %>">delete this blog</a>
+      <div class="content">
+        <p><%= blog.body %></p>
+      </div>
+      <a class="delete" id="delete-btn" data-doc="<%= blog._id %>"
+        >delete this blog</a
+      >
     </div>
 
     <%- include('./partials/footer.ejs') %>
+
+    <script>
+      const trashBtn = document.querySelector('#delete-btn');
+      trashBtn.addEventListener('click', (ev) => {
+        const endpoint = `/blogs/${trashBtn.dataset.doc}`;
+        fetch(endpoint, { method: 'DELETE' })
+          .then((res) => res.json())
+          .then((data) => (window.location.href = data.redirect))
+          .catch((err) => console.log(err));
+      });
+    </script>
   </body>
 </html>

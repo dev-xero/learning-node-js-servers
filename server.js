@@ -83,6 +83,15 @@ app.post('/blogs', (req, res) => {
     .catch((err) => console.log(err));
 });
 
+app.delete('/blogs/:id', (req, res) => {
+  const id = req.params.id;
+  Blog.findByIdAndDelete(id)
+    .then((results) => {
+      res.json({ redirect: '/blogs' });
+    })
+    .catch((err) => console.log(err));
+});
+
 // 404 PAGES
 app.use((req, res) => {
   res.status(404).render('404', { title: '404' });
