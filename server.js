@@ -44,36 +44,20 @@ const blogs = [
 // MIDDLE WARE FOR STATIC FILES
 app.use(express.static('public'));
 
-app.get('/add-blog', (req, res) => {
-  const blog = new Blog({
-    title: 'Mob Psycho III',
-    snippet: 'Mob Psycho III - The third part of the series',
-    body: 'This is be really good to watch',
-  });
-  blog
-    .save()
-    .then((results) => res.send(results))
-    .catch((err) => console.log(err));
-});
-
-app.get('/all-blogs', (req, res) => {
-  Blog.find()
-    .then((results) => res.send(results))
-    .catch((err) => console.log(err));
-});
-
-app.get('/single-blog', (req, res) => {
-  Blog.findById('6336dc8cde4ccabc02d6761e')
-    .then((result) => res.send(result))
-    .catch((err) => console.log(err));
-});
-
 app.get('/', (req, res) => {
-  res.render('index', { title: 'Home', blogs });
+  res.redirect('/blogs');
 });
 
 app.get('/about', (req, res) => {
   res.render('about', { title: 'About' });
+});
+
+// BLOG ROUTES
+
+app.get('/blogs', (req, res) => {
+  Blog.find().sort({ createdAt: -1 })
+    .then((blogs) => res.render('index', { title: 'All Blogs', blogs: blogs }))
+    .catch((err) => console.log(err));
 });
 
 app.get('/blogs/create', (req, res) => {

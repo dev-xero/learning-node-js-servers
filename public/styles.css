@@ -106,3 +106,7 @@ h3 {
   outline: none;
   cursor: pointer;
 }
+
+.snippet {
+  margin-bottom: 12px;
+}
