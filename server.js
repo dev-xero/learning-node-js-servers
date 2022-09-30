@@ -41,8 +41,9 @@ const blogs = [
   },
 ];
 
-// MIDDLE WARE FOR STATIC FILES
+// MIDDLE WARE
 app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
   res.redirect('/blogs');
@@ -55,13 +56,31 @@ app.get('/about', (req, res) => {
 // BLOG ROUTES
 
 app.get('/blogs', (req, res) => {
-  Blog.find().sort({ createdAt: -1 })
+  Blog.find()
+    .sort({ createdAt: -1 })
     .then((blogs) => res.render('index', { title: 'All Blogs', blogs: blogs }))
     .catch((err) => console.log(err));
 });
 
 app.get('/blogs/create', (req, res) => {
   res.render('create', { title: 'Create Blog' });
+});
+
+// GET /URL/:ROUTE PARAMETER
+app.get('/blogs/:id', (req, res) => {
+  const id = req.params.id;
+  Blog.findById(id)
+    .then((results) => {
+      res.render('details', { title: `${results.title}`, blog: results });
+    })
+    .catch((err) => console.log(err));
+});
+
+app.post('/blogs', (req, res) => {
+  const blog = new Blog(req.body)
+    .save()
+    .then((results) => res.redirect('/blogs'))
+    .catch((err) => console.log(err));
 });
 
 // 404 PAGES

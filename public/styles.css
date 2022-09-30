@@ -72,6 +72,20 @@ h3 {
 }
 
 /* INDEX STYLES */
+.blogs a {
+  display: block;
+  margin: 40px 0px;
+  padding-left: 30px;
+  border-left: 6px solid hsl(212, 89%, 53%);
+}
+
+.blogs a:hover h3 {
+  transition: color 200ms ease;
+}
+
+.blogs a:hover h3 {
+  color: hsl(212, 89%, 53%);
+}
 /* DETAILS STYLES */
 /* CREATE STYLES */
 .create-blog form {
@@ -109,4 +123,14 @@ h3 {
 
 .snippet {
   margin-bottom: 12px;
+  font-weight: 400;
+  color: hsl(0, 0%, 47%);
+}
+
+a.delete {
+  color: hsl(348, 86%, 56%);
+  font-weight: 700;
+  margin-top: 24px;
+  display: inline-block;
+  cursor: pointer;
 }
