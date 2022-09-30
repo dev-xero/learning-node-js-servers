@@ -5,15 +5,21 @@ const mongoose = require('mongoose');
 const app = express();
 
 // TEST DB URI
-const dbURI =
-  'mongodb+srv://ninja:ninja1234@nodeblogs.pupd4ju.mongodb.net/?retryWrites=true&w=majority';
+const dbURI = 'mongodb://127.0.0.1:27017/node-blogs';
 
 mongoose
   .connect(dbURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then((result) => console.log('connected'));
+  .then((result) =>
+    app.listen(3000, () =>
+      console.log(
+        `listening for requests at port 3000, site: http://localhost:3000`
+      )
+    )
+  )
+  .catch((err) => console.log(err));
 
 // SET EJS AS VIEW ENGINE
 app.set('view engine', 'ejs');
